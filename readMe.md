@@ -1,7 +1,3 @@
-# Quit Smoking 
-
-# This app is a web app that allows you to quit smoking. It is a web app that allows you to quit smoking.
-
 # Quit Smoking Journey
 
 ## Overview
