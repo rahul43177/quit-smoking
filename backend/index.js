@@ -1,31 +1,28 @@
 const express = require("express")
-const connectDB = require("./config/database")
-const cors = require("cors")
-require("dotenv").config()
-const port = process.env.SERVER_PORT 
-const mongoURI = process.env.MONGODB_STRING
-
-
 const app = express()
 
-app.use(cors())
+require("dotenv").config()
+const connectDatabase = require("./config/database")
+const mongoDBURI = process.env.MONGODB_STRING
+const cors = require("cors")
+const cookieParser = require("cookie-parser")
+const  userRoutes = require("./routes/userRoute")
+const PORT = process.env.SERVER_PORT 
 app.use(express.json())
-
+app.use(cors())
+app.use(cookieParser()) 
+app.use("/app/users/" , userRoutes)
 
 const start = async () => {
-    try { 
-         await connectDB(mongoURI)
-         app.listen(port , ()=> {
-            console.log(`The server is running on port ${port}`)
-         })
-    } catch(e){
-        console.log("Something went wrong : error ->" , e)
+    try {
+        await connectDatabase(mongoDBURI)
+        app.listen(PORT , () => {
+            console.log("The server is running on the port :" , PORT)
+        })
+        
+    } catch(error) {
+        console.log("Error in startup:",error)
     }
 }
 
-
 start()
-
-
-
-

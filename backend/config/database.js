@@ -1,16 +1,13 @@
-require("dotenv").config({
-    path : "../.env"
-})
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
-
-const connectDB = async (mongoDBString) => {
-    try { 
-        await mongoose.connect(mongoDBString);
-        console.log("MongoDB Connected.")
-    } catch(error) {
-        console.log("file : database.js" , error)
-    }
+const connectDatabase = (mongoString) => {
+    mongoose.connect(mongoString)
+    .then(() => {
+        console.log("MongoDB is connected.")
+    })
+    .catch((error) => {
+        console.log("Mongo Connection Error : " , error)
+    })
 }
 
-module.exports = connectDB;
+module.exports = connectDatabase
