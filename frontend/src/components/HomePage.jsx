@@ -26,25 +26,25 @@ const HomePage = () => {
           <div className="absolute w-96 h-96 bottom-10 left-1/2 bg-pink-500/30 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center">
             <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-8 animate-fade-in">
               Break Free From
               <span className="bg-gradient-to-r from-purple-400 to-pink-600 text-transparent bg-clip-text"> Smoking</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
-              Join thousands who have successfully quit smoking with our scientifically-proven approach and supportive community.
+            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto font-oswald">
+              Join thousands who have successfully quit smoking with our <span className="text-purple-400 font-bold"> scientifically-proven </span> approach and supportive community.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={() => navigate('/register')}
-                className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full text-lg font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
+                className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full text-lg font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
               >
                 Start Your Journey
               </button>
               <button
                 onClick={() => navigate('/login')}
-                className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-full text-lg font-semibold hover:bg-white/20 transform hover:-translate-y-1 transition-all duration-300"
+                className="px-8 py-1 bg-white/10 backdrop-blur-sm text-white rounded-full text-lg font-semibold hover:bg-white/20 transform hover:-translate-y-1 transition-all duration-300"
               >
                 Sign In
               </button>
@@ -54,7 +54,7 @@ const HomePage = () => {
       </div>
 
       {/* Features Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
             {

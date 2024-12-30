@@ -1,7 +1,11 @@
 const config = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    fontFamily : {
+      "jetbrains" : ["JetBrains Mono", "monospace"],
+      "oswald" : ["Oswald", "sans-serif"]
+    } ,
+    extend: {} 
   },
   plugins: [],
 };
