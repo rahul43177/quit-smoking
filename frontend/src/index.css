@@ -5,29 +5,201 @@
 
 /* Custom animations */
 @keyframes blob {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    25% { transform: translate(20px, -20px) scale(1.1); }
-    50% { transform: translate(-20px, 20px) scale(0.9); }
-    75% { transform: translate(20px, 20px) scale(1.1); }
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
   }
-  
-  @keyframes fade-in {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+
+  25% {
+    transform: translate(20px, -20px) scale(1.1);
   }
-  
-  .animate-blob {
-    animation: blob 7s infinite;
+
+  50% {
+    transform: translate(-20px, 20px) scale(0.9);
   }
-  
-  .animate-fade-in {
-    animation: fade-in 1s ease-out forwards;
+
+  75% {
+    transform: translate(20px, 20px) scale(1.1);
   }
-  
-  .animation-delay-2000 {
-    animation-delay: 2s;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .animation-delay-4000 {
-    animation-delay: 4s;
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+@keyframes blob {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+
+  25% {
+    transform: translate(20px, -20px) scale(1.1) rotate(90deg);
+  }
+
+  50% {
+    transform: translate(-20px, 20px) scale(0.9) rotate(180deg);
+  }
+
+  75% {
+    transform: translate(20px, 20px) scale(1.05) rotate(270deg);
+  }
+}
+
+.animate-blob {
+  animation: blob 20s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Add smooth scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+
+@keyframes smoke {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-50px) scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes crush {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(0.8) rotate(15deg);
+  }
+  100% {
+    transform: scale(0.5) rotate(-15deg);
+    opacity: 0;
+  }
+}
+
+.sketchfab-embed-wrapper iframe {
+  border-radius: 1rem;
+  box-shadow: 0 0 40px rgba(147, 51, 234, 0.2);
+  transition: all 0.3s ease;
+}
+
+.sketchfab-embed-wrapper iframe:hover {
+  box-shadow: 0 0 60px rgba(147, 51, 234, 0.3);
+  transform: scale(1.02);
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 0.4; }
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
