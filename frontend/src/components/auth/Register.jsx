@@ -166,7 +166,7 @@ export default function Register() {
             </form>
 
             <div className="mt-6 text-center">
-              <a href="#" className="text-purple-600 hover:text-purple-700 font-medium transition-colors duration-300">
+              <a href="/login" className="text-purple-600 hover:text-purple-700 font-medium transition-colors duration-300">
                 Already have an account? Sign in
               </a>
             </div>

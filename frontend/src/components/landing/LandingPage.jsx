@@ -12,7 +12,7 @@ import {
   Activity
 } from 'lucide-react';
 
-const HomePage = () => {
+const LandingPage = () => {
   const navigate = useNavigate();
 
   return (
@@ -33,7 +33,7 @@ const HomePage = () => {
               <span className="bg-gradient-to-r from-purple-400 to-pink-600 text-transparent bg-clip-text"> Smoking</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto font-oswald">
-              Join thousands who have successfully quit smoking with our <span className="text-purple-400 font-bold"> scientifically-proven </span> approach and supportive community.
+              Join Muskan who have successfully quit smoking with our <span className="text-purple-400 font-bold"> scientifically-proven </span> approach and supportive community.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
@@ -126,4 +126,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default LandingPage;

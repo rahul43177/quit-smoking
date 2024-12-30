@@ -8,7 +8,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your login/register logic here
+    
   };
 
   return (
@@ -104,11 +104,14 @@ const Login = () => {
 
             <div className="mt-6 text-center">
               <button
-                onClick={() => setIsLogin(!isLogin)}
+                onClick={() => {
+                  setIsLogin(!isLogin);
+                  navigate(isLogin ? '/register' : '/login');
+                }}
                 className="text-purple-600 hover:text-purple-700 font-medium transition-colors duration-300"
               >
                 {isLogin ? "Don't have an account? Sign up" : 'Already have an account? Sign in'}
-              </button>
+                </button>
               {isLogin && (
                 <div className="mt-4">
                   <a href="#" className="text-sm text-gray-600 hover:text-purple-600 transition-colors duration-300">
