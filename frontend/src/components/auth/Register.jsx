@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { User, Mail, Lock, Heart, Trophy, Clock, Users } from "lucide-react";
+import axios from "axios";
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -9,6 +11,8 @@ export default function Register() {
     password: "",
   });
   const [loading, setLoading] = useState(false);
+  const [notification, setNotification] = useState({ message: "", type: "" });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,16 +22,52 @@ export default function Register() {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const createAccount = async (e) => {
     e.preventDefault();
     setLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    console.log(formData);
-    setLoading(false);
+    try {
+      const response = await axios.post("http://localhost:5000/app/users/register", {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        password: formData.password,
+      });
+
+      if (response.data.status) {
+        setNotification({
+          message: "Account created successfully! Redirecting...",
+          type: "success",
+        });
+        setTimeout(() => navigate("/dashboard"), 2000);
+      } else {
+        setNotification({
+          message: "Error creating account: " + response.data.message,
+          type: "error",
+        });
+      }
+    } catch (error) {
+      setNotification({
+        message: "An error occurred: " + error.message,
+        type: "error",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-600 via-blue-500 to-green-400">
+      {/* Notification Pop-up */}
+      {notification.message && (
+        <div
+          className={`fixed top-4 right-4 z-50 px-4 py-3 rounded shadow-lg text-white text-sm ${
+            notification.type === "success" ? "bg-green-500" : "bg-red-500"
+          } font-semibold `}
+        >
+          {notification.message}
+        </div>
+      )}
+
       {/* Animated background blobs */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute w-96 h-96 -top-20 -left-20 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
@@ -40,7 +80,7 @@ export default function Register() {
         <div className="w-full md:w-1/2 p-8 bg-gradient-to-br from-blue-600 to-purple-700 text-white">
           <h1 className="text-4xl font-bold mb-6">Join Our Community</h1>
           <p className="text-lg mb-8">Create your account and start your journey with us today.</p>
-          
+
           <div className="space-y-6">
             <div className="flex items-center space-x-4">
               <Heart className="w-8 h-8 text-pink-400" />
@@ -49,7 +89,7 @@ export default function Register() {
                 <p className="text-sm opacity-90">Track your progress and achievements</p>
               </div>
             </div>
-            
+
             <div className="flex items-center space-x-4">
               <Trophy className="w-8 h-8 text-yellow-400" />
               <div>
@@ -57,7 +97,7 @@ export default function Register() {
                 <p className="text-sm opacity-90">Earn points and unlock benefits</p>
               </div>
             </div>
-            
+
             <div className="flex items-center space-x-4">
               <Users className="w-8 h-8 text-green-400" />
               <div>
@@ -65,7 +105,7 @@ export default function Register() {
                 <p className="text-sm opacity-90">Connect with like-minded individuals</p>
               </div>
             </div>
-            
+
             <div className="flex items-center space-x-4">
               <Clock className="w-8 h-8 text-orange-400" />
               <div>
@@ -82,7 +122,7 @@ export default function Register() {
             <h2 className="text-3xl font-bold mb-6 text-gray-800">Create Account</h2>
             <p className="text-gray-600 mb-8">Fill in your details to get started</p>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={createAccount} className="space-y-6">
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
@@ -166,7 +206,10 @@ export default function Register() {
             </form>
 
             <div className="mt-6 text-center">
-              <a href="/login" className="text-purple-600 hover:text-purple-700 font-medium transition-colors duration-300">
+              <a
+                href="/login"
+                className="text-purple-600 hover:text-purple-700 font-medium transition-colors duration-300"
+              >
                 Already have an account? Sign in
               </a>
             </div>
