@@ -85,12 +85,12 @@ const LiveTimer = ({ startDate }) => {
 const Dashboard = () => {
     const userData = {
       firstName: "Rahul",
-      startDate: "2024-01-01T00:00:00",
-      smokeFreedays: 15,
-      moneySaved: 150,
+      startDate: "2024-12-25T00:00:00",
+      smokeFreedays: 10,
+      moneySaved: 300,
       nextMilestone: 30,
       dailyTip: "Every second smoke-free is a victory for your health!",
-      progress: 65
+      progress: 25
     };
   
     return (
